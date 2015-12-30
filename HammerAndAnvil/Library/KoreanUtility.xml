@@ -1,0 +1,484 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KoreanUtility</name>
+    </assembly>
+    <members>
+        <member name="T:SteamB23.KoreanUtility.Grammar.조사">
+            <summary>
+            한국어의 조사 처리와 관련된 기능을 제공하는 클래스입니다.
+            </summary>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Grammar.조사.조사추가(System.String,SteamB23.KoreanUtility.Grammar.조사종류)">
+            <summary>
+            한국어에서의 받침 유무에 따라 바뀌는 조사를 자동으로 추가합니다.
+            </summary>
+            <param name="text">대상 문자열입니다.</param>
+            <param name="type">추가될 조사의 타입입니다.</param>
+            <returns>조사가 추가된 문자열입니다.</returns>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Grammar.조사.조사추가(System.Text.StringBuilder,SteamB23.KoreanUtility.Grammar.조사종류)">
+            <summary>
+            한국어에서의 받침 유무에 따라 바뀌는 조사를 자동으로 추가합니다.
+            </summary>
+            <param name="textBuilder">대상 <c>StringBuilder</c>입니다.</param>
+            <param name="type">추가될 조사의 타입입니다.</param>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Grammar.조사.문자처리(System.String)">
+            <summary>
+            조사 기호를 사용하여 한국어에서의 받침 유무에 따라 바뀌는 조사를 자동으로 추가합니다.
+            </summary>
+            <param name="text">대상 문자열입니다.</param>
+            <returns>조사가 추가된 문자열입니다.</returns>
+            <remarks>
+            <para>조사 기호에는 다음과 같이 중괄호로 묶여진 단어를 사용합니다.</para>
+            <para>
+            [은는]
+            [는은]
+            [이가]
+            [가이]
+            [을를]
+            [를을]
+            [과와]
+            [와과]
+            [아야]
+            [야아]
+            [으로]
+            [로]
+            [이]
+            </para>
+            </remarks>
+            <example>
+            해당 기능은 다음과 같이 사용할 수 있습니다.
+            <code>
+            조사.문자처리("마이크로소프트[은는] 새로운 증강현실 장치인 홀로렌즈[을를] 출시했다. 이는 컴퓨터[와과] 인간의 거리를 더욱 가깝게 해줄것이다.") == "마이크로소프트는 새로운 증강현실 장치인 홀로렌즈를 출시했다. 이는 컴퓨터와 인간의 거리를 더욱 가깝게 해줄것이다."
+            조사.문자처리("{0}[은는] 새로운 증강현실 장치인 {1}[을를] 출시했다. 이는 {2}[와과] 인간의 거리를 더욱 가깝게 해줄것이다.", "마이크로소프트", "홀로렌즈", 컴퓨터") == "마이크로소프트는 새로운 증강현실 장치인 홀로렌즈를 출시했다. 이는 컴퓨터와 인간의 거리를 더욱 가깝게 해줄것이다."
+            </code>
+            </example>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Grammar.조사.문자처리(System.String,System.Object[])">
+            <summary>
+            서식과 조사 기호를 사용하여 한국어에서의 받침 유무에 따라 바뀌는 조사를 자동으로 추가합니다.
+            </summary>
+            <param name="text">대상 문자열입니다.</param>
+            <param name="args">서식을 지정할 개체를 0개 이상 포함하는 배열입니다.</param>
+            <returns>조사가 추가된 문자열입니다.</returns>
+            <example>
+            해당 기능은 다음과 같이 사용할 수 있습니다.
+            <code>
+            조사.문자처리("마이크로소프트[은는] 새로운 증강현실 장치인 홀로렌즈[을를] 출시했다. 이는 컴퓨터[와과] 인간의 거리를 더욱 가깝게 해줄것이다.") == "마이크로소프트는 새로운 증강현실 장치인 홀로렌즈를 출시했다. 이는 컴퓨터와 인간의 거리를 더욱 가깝게 해줄것이다."
+            조사.문자처리("{0}[은는] 새로운 증강현실 장치인 {1}[을를] 출시했다. 이는 {2}[와과] 인간의 거리를 더욱 가깝게 해줄것이다.", "마이크로소프트", "홀로렌즈", 컴퓨터") == "마이크로소프트는 새로운 증강현실 장치인 홀로렌즈를 출시했다. 이는 컴퓨터와 인간의 거리를 더욱 가깝게 해줄것이다."
+            </code>
+            </example>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Grammar.조사.정규식컴파일">
+            <summary>
+            문자처리 메서드에서 사용되는 정규식을 미리 컴파일 시켜 성능을 향상시킵니다.
+            </summary>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Grammar.조사.조사결정(System.Char,SteamB23.KoreanUtility.Grammar.조사종류)">
+            <summary>
+            마지막 글자의 받침 유무에 따라 바뀌는 조사를 결정합니다. 
+            </summary>
+            <param name="lastChar">확인할 글자입니다.</param>
+            <param name="type">결정될 조사의 타입입니다.</param>
+            <returns>결정된 조사입니다.</returns>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Grammar.조사.GenericJosaRule(SteamB23.KoreanUtility.Hangul.Phoneme,System.String,System.String)">
+            <summary>
+            일반적인 조사 선택 규칙입니다.
+            </summary>
+            <param name="phoneme">문자열 마지막에 발견되는 글자입니다.</param>
+            <param name="lastCharHaveJongseong">받침이 있을때 반환할 문자열입니다.</param>
+            <param name="lastCharNotHaveJongseong">받침이 없을때 반환할 문자열입니다.</param>
+            <returns>받침이 있으면 <c>lastCharHaveJongseong</c>를 반환하고, 없으면 <c>lastCharNotHaveJongseong</c>을 반환합니다.</returns>
+        </member>
+        <member name="T:SteamB23.KoreanUtility.Grammar.조사종류">
+            <summary>
+            조사와 관련된 메서드에 대한 조사의 종류를 정의합니다.
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류._은는">
+            <summary>
+            보조사 : 은/는
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류._이가">
+            <summary>
+            주격조사 : 이/가
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류._을를">
+            <summary>
+            목적격 조사 : 을/를
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류._과와">
+            <summary>
+            접속조사 : 과/와
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류._아야">
+            <summary>
+            호격 조사 : 아/야
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류._으로">
+            <summary>
+            부사격 조사 : 으로/로,
+            (경고 : ㄹ받침은 받침이 없는 경우와 같습니다.)
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류._이">
+            <summary>
+            서술격 조사 : 이-/-
+            (경고 : 이다/다, 이고/고, 이니/고, 이면/면, 이지/지, 이여/여 등으로 변형 사례가 많기 때문에 '이'와 ''를 리턴합니다.)
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류._이에예">
+            <summary>
+            서술격 조사 : 이에-/예-
+            ('~이에요.' 등으로 사용됩니다.)
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류._이어여">
+            <summary>
+            서술격 조사 : 이어-/여-
+            ('~이어서~', '~이어요.' 등으로 사용됩니다.)
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류._이었였">
+            <summary>
+            서술격 조사 : 이었-/였-
+            ('~이었다.', '~이었습니다.', '~이었기~' 등으로 사용됩니다.
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.은는">
+            <summary>
+            보조사 : 은/는
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.이가">
+            <summary>
+            주격조사 : 이/가
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.을를">
+            <summary>
+            목적격 조사 : 을/를
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.과와">
+            <summary>
+            접속조사 : 과/와
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.아야">
+            <summary>
+            호격 조사 : 아/야
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.으로">
+            <summary>
+            부사격 조사 : 으로/로,
+            (경고 : ㄹ받침은 받침이 없는 경우와 같습니다.)
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.이">
+            <summary>
+            서술격 조사 : 이-/-
+            (경고 : 이다/다, 이고/고, 이니/고, 이면/면, 이지/지, 이여/여 등으로 변형 사례가 많기 때문에 '이'와 ''를 리턴합니다.)
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.이에">
+            <summary>
+            서술격 조사 : 이에-/예-
+            ('~이에요.' 등으로 사용됩니다.)
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.이어">
+            <summary>
+            서술격 조사 : 이어-/여-
+            ('~이어서~', '~이어요.' 등으로 사용됩니다.)
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.이었">
+            <summary>
+            서술격 조사 : 이었-/였-
+            ('~이었다.', '~이었습니다.', '~이었기~' 등으로 사용됩니다.
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.은_는">
+            <summary>
+            보조사 : 은/는
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.이_가">
+            <summary>
+            주격조사 : 이/가
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.을_를">
+            <summary>
+            목적격 조사 : 을/를
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.과_와">
+            <summary>
+            접속조사 : 과/와
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.아_야">
+            <summary>
+            호격 조사 : 아/야
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.으로_로">
+            <summary>
+            부사격 조사 : 으로/로,
+            ㄹ받침은 받침이 없는 경우와 같다.
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.이_">
+            <summary>
+            서술격 조사 : 이-/-
+            (경고 : 이다/다, 이고/고, 이니/고, 이면/고, 이지/지 등으로 변형 사례가 많기 때문에 '이'와 ''를 리턴합니다.)
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.이에_예">
+            <summary>
+            서술격 조사 : 이에-/예-
+            ('~이에요.' 등으로 사용됩니다.)
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.이어_여">
+            <summary>
+            서술격 조사 : 이어-/여-
+            ('~이어서~', '~이어요.' 등으로 사용됩니다.)
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.이었_였">
+            <summary>
+            서술격 조사 : 이었-/였-
+            ('~이었다.', '~이었습니다.', '~이었기~' 등으로 사용됩니다.
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.EN">
+            <summary>
+            보조사 : 은/는
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.IG">
+            <summary>
+            주격조사 : 이/가
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.ER">
+            <summary>
+            목적격 조사 : 을/를
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.GW">
+            <summary>
+            접속조사 : 과/와
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.AY">
+            <summary>
+            호격 조사 : 아/야
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.ERR">
+            <summary>
+            부사격 조사 : 으로/로,
+            ㄹ받침은 받침이 없는 경우와 같다.
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.I">
+            <summary>
+            서술격 조사 : 이-/-
+            (경고 : 이다/다, 이고/고, 이니/고, 이면/고, 이지/지 등으로 변형 사례가 많기 때문에 '이'와 ''를 리턴합니다.)
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.IE">
+            <summary>
+            서술격 조사 : 이에-/예-
+            ('~이에요.' 등으로 사용됩니다.)
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.IEO">
+            <summary>
+            서술격 조사 : 이어-/여-
+            ('~이어서~', '~이어요.' 등으로 사용됩니다.)
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Grammar.조사종류.IEOT">
+            <summary>
+            서술격 조사 : 이었-/였-
+            ('~이었다.', '~이었습니다.', '~이었기~' 등으로 사용됩니다.
+            </summary>
+        </member>
+        <member name="T:SteamB23.KoreanUtility.Hangul.Phoneme">
+            <summary>
+            자소에 대한 정보를 제공하는 구조체입니다.
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Hangul.Phoneme.source">
+            <summary>
+            원본 글자입니다.
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Hangul.Phoneme.initialConsonant">
+            <summary>
+            초성입니다.
+            한글 완성형 외의 글자의 기본값은 \0입니다.
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Hangul.Phoneme.medialVowel">
+            <summary>
+            중성입니다.
+            한글 완성형 외의 글자의 기본값은 \0입니다.
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Hangul.Phoneme.finalConsonant">
+            <summary>
+            종성입니다.
+            한글 완성형 외의 글자의 기본값은 \0입니다.
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Hangul.Phoneme.initialConsonantNumber">
+            <summary>
+            초성 번호입니다.
+            한글 완성형 외의 글자의 기본값은 0입니다.
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Hangul.Phoneme.medialVowelNumber">
+            <summary>
+            중성 번호입니다.
+            한글 완성형 외의 글자의 기본값은 0입니다.
+            </summary>
+        </member>
+        <member name="F:SteamB23.KoreanUtility.Hangul.Phoneme.finalConsonantNumber">
+            <summary>
+            종성 번호입니다.
+            한글 완성형 외의 글자의 기본값은 0입니다.
+            </summary>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.Phoneme.ToString">
+            <summary>
+            이 인스턴스의 초성, 중성, 종성을 문자열로 표현합니다.
+            </summary>
+            <returns>초성+중성(+종성)</returns>
+        </member>
+        <member name="T:SteamB23.KoreanUtility.Hangul.PhonemeConverter">
+            <summary>
+            자소를 분리하는 클래스입니다.
+            </summary>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.PhonemeConverter.CharacterToPhoneme(System.Char)">
+            <summary>
+            문자에서 자소를 가져옵니다.
+            </summary>
+            <param name="character">자소 분리할 글자</param>
+            <returns>분리된 자소</returns>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.PhonemeConverter.CharactersToPhonemes(System.Char[])">
+            <summary>
+            문자의 배열에서 자소의 배열을 가져옵니다.
+            </summary>
+            <param name="characters">자소 분리할 문자의 배열</param>
+            <returns>분리된 자소의 배열</returns>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.PhonemeConverter.StringToPhonemes(System.String)">
+            <summary>
+            문자열에서 자소의 배열을 가져옵니다.
+            </summary>
+            <param name="text">자소 분리할 문자열</param>
+            <returns>분리된 자소의 배열</returns>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.PhonemeConverter.PhonemeCollecting(System.Char,System.Char,System.Char)">
+            <summary>
+            첫가끝 문자를 모아서 Phoneme를 구성합니다.
+            </summary>
+            <param name="initialConsonant">초성입니다.</param>
+            <param name="medialVowel">중성입니다.</param>
+            <param name="finalConsonant">종성입니다. 없을 경우에는 '\0'가 대입되어야합니다.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.PhonemeConverter.JamosToPhonomes(System.Char[])">
+            <summary>
+            자모만으로 이루어진 문자의 배열을 조합된 Phoneme의 배열로 변환합니다.
+            </summary>
+            <param name="jamoChars">자모 문자 배열</param>
+            <returns>조합된 Phoneme 배열</returns>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.PhonemeConverter.JamosToPhonomes(System.String)">
+            <summary>
+            자모만으로 이루어진 문자열을 조합된 Phoneme의 배열로 변환합니다.
+            </summary>
+            <param name="jamoText">자모 문자열</param>
+            <returns>조합된 Phoneme 배열</returns>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.PhonemeConverter.JamoToInitialConsonant(System.Char)">
+            <summary>
+            자모를 초성으로 변환합니다.
+            </summary>
+            <param name="jamo">변환할 자모</param>
+            <returns>자모에서 변환된 초성</returns>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.PhonemeConverter.JamoToMedialVowel(System.Char)">
+            <summary>
+            자모를 중성으로 변환합니다.
+            </summary>
+            <param name="jamo">변환할 자모</param>
+            <returns>변환된 중성</returns>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.PhonemeConverter.JamoToFinalConsonant(System.Char)">
+            <summary>
+            자모를 종성으로 변환합니다.
+            </summary>
+            <param name="jamo">변환할 자모</param>
+            <returns>변환된 종성</returns>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.PhonemeConverter.JamoIsInitialConsonant(System.Char)">
+            <summary>
+            자모가 초성인지 아닌지 확인합니다.
+            </summary>
+            <param name="jamo">확인할 자모</param>
+            <returns>초성이 맞다면 true이고 아니라면 false입니다.</returns>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.PhonemeConverter.JamoIsMedialVowel(System.Char)">
+            <summary>
+            자모가 중성인지 아닌지 확인합니다.
+            </summary>
+            <param name="jamo">확인할 자모</param>
+            <returns>중성이 맞다면 true이고 아니라면 false입니다.</returns>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.PhonemeConverter.JamoIsFinalConsonant(System.Char)">
+            <summary>
+            자모가 종성인지 아닌지 확인합니다.
+            </summary>
+            <param name="jamo">확인할 자모</param>
+            <returns>종성이 맞다면 true이고 아니라면 false입니다.</returns>
+        </member>
+        <member name="T:SteamB23.KoreanUtility.Hangul.PhonemeArrayManager">
+            <summary>
+            Phoneme[]에 대응하는 확장메서드를 정의합니다.
+            </summary>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.PhonemeArrayManager.GetSourceString(SteamB23.KoreanUtility.Hangul.Phoneme[])">
+            <summary>
+            Phoneme배열에서 source 문자들을 모아 문자열을 가져옵니다.
+            </summary>
+            <param name="phonemes">대상 Phoneme 배열입니다.</param>
+            <returns>source 문자들을 조합한 문자열입니다.</returns>
+        </member>
+        <member name="M:SteamB23.KoreanUtility.Hangul.PhonemeArrayManager.GetPhonemeString(SteamB23.KoreanUtility.Hangul.Phoneme[])">
+            <summary>
+            Phoneme배열에서 초,중,종성 문자를 모아 문자열을 가져옵니다.
+            </summary>
+            <param name="phonemes">대상 Phoneme 배열입니다.</param>
+            <returns>initial, peak, final 문자들을 조합한 문자열입니다.</returns>
+        </member>
+    </members>
+</doc>
