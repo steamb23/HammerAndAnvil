@@ -119,6 +119,7 @@ namespace System
         }
         public static void Dialogue(string name, string text)
         {
+            Console.Write("◆");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write(name);
             Console.ResetColor();

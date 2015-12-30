@@ -39,8 +39,9 @@ namespace System
                 Console.WriteLine("){0}", text);
                 selectList.Add(new SelectElement(key, action));
             }
-            public static void Read()
+            public static void Read(char defaultKey)
             {
+                defaultKey = char.ToUpper(defaultKey);
                 bool pass = false;
                 SelectElement selectedElement = new SelectElement();
 
@@ -50,6 +51,7 @@ namespace System
                     char kokey = '\0';
                     if (ko_enTable.TryGetValue(key, out kokey))
                         key = kokey;
+                    key = (key != '\r') ? key : defaultKey;
                     foreach (var selectElement in selectList)
                     {
                         if (key == selectElement.key)
@@ -62,6 +64,10 @@ namespace System
                 }
                 Clear();
                 selectedElement.Action();
+            }
+            public static void Read()
+            {
+                Read('\0');
             }
             public static void Clear()
             {
