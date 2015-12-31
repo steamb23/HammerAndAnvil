@@ -49,7 +49,7 @@ namespace HA.Scenes
                     ConsoleEx.CursorUp();
                     ConsoleEx.ClearLine();
                 });
-                ConsoleEx.Selector.Read('n');
+                ConsoleEx.Selector.Read('y');
             }
             PlayData.CurrentPlayData.PlayerName = playerName;
             ConsoleKo.WriteLine("{0}[으로] 하는 것이 좋을 것같다.", playerName);
@@ -77,7 +77,7 @@ namespace HA.Scenes
                     ConsoleEx.CursorUp();
                     ConsoleEx.ClearLine();
                 });
-                ConsoleEx.Selector.Read('n');
+                ConsoleEx.Selector.Read('y');
             }
             PlayData.CurrentPlayData.WorkshopName = workshopName;
             ConsoleKo.WriteLine("{0}[으로] 하는 것이 좋을 것같다.", workshopName);
@@ -91,7 +91,7 @@ namespace HA.Scenes
             ConsoleEx.Selector.Add('n', "아니오", () =>
             {
             });
-            ConsoleEx.Selector.Read('y');
+            ConsoleEx.Selector.Read('n');
 
 
             Console.Clear();
@@ -199,7 +199,7 @@ namespace HA.Scenes
             Console.WriteLine("소피아를 배웅했다. 자 그럼, 이제 건물 안을 둘러봐야지.");
             Console.ReadKey(true);
             Console.Clear();
-            Console.WriteLine("{0} 작업실...", PlayData.CurrentPlayData.WorkshopName);
+            Console.WriteLine("{0}, 작업실...", PlayData.CurrentPlayData.WorkshopName);
             Console.ReadKey(true);
             Console.WriteLine();
             Console.WriteLine("모든 연장들이 가지런히 걸려있고, 금속을 빨갛게 달굴 화로는 튼튼하게 지어져있다.");
@@ -209,13 +209,14 @@ namespace HA.Scenes
             Console.WriteLine("내일은 바로 일할 수 있을 것 같다.");
             Console.ReadKey(true);
             Console.Clear();
-            Console.WriteLine("{0} 2층...", PlayData.CurrentPlayData.WorkshopName);
+            Console.WriteLine("{0}, 집...", PlayData.CurrentPlayData.WorkshopName);
             Console.ReadKey(true);
             Console.WriteLine();
             Console.WriteLine("이곳이 이제 나의 집이다.");
             Console.ReadKey(true);
-            Console.WriteLine("짐 정리좀 하다가 일찍 자야겠군.");
+            Console.WriteLine("오늘은 짐 정리좀 하다가 일찍 자야겠다.");
             Console.ReadKey(true);
+            PlayData.NextDay();
         }
         public static void Tutorial()
         {

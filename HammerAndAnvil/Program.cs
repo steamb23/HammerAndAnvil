@@ -28,7 +28,7 @@ namespace HA
         static SceneManager sceneManager;
         static void Main(string[] args)
         {
-            Console.Title = "BreadRPG";
+            Console.Title = "Hammer and Anvil";
             Console.WindowWidth = 80;
             Console.WindowHeight = 30;
             Console.Clear();

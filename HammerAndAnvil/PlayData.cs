@@ -21,9 +21,17 @@ namespace HA
         {
             get; set;
         }
-        public bool IsTutorialComplete
+        long _date;
+        public long Date
         {
             get; set;
+        }
+        public static void NextDay()
+        {
+            CurrentPlayData.Date++;
+            Console.Clear();
+            Console.WriteLine("     {0} 일째...", CurrentPlayData.Date);
+            Console.ReadKey(true);
         }
         public PreLoadedScene PreLoadedScene
         {
