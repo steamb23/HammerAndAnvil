@@ -18,11 +18,16 @@ namespace HA.Scenes.Places
 
         public override void Script()
         {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("{0}", PlayData.CurrentPlayData.Date);
+            Console.ResetColor();
+            Console.WriteLine(" 일째");
+
             Console.Write("소지금 : ");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("{0:N0}",PlayData.CurrentPlayData.Gold);
             Console.ResetColor();
-            Console.Write(" 파울");
+            Console.WriteLine(" 파울");
         }
     }
 }
