@@ -91,6 +91,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SceneManager.cs" />
+    <Compile Include="Scenes\EventScene.cs" />
+    <Compile Include="Scenes\Events\Prologue.cs" />
     <Compile Include="Scenes\IScene.cs" />
     <Compile Include="Scenes\MainScene.cs" />
     <Compile Include="Scenes\NewGameScene.cs" />
