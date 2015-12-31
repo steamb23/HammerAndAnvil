@@ -96,6 +96,8 @@
     <Compile Include="Scenes\IScene.cs" />
     <Compile Include="Scenes\MainScene.cs" />
     <Compile Include="Scenes\NewGameScene.cs" />
+    <Compile Include="Scenes\PlaceScene.cs" />
+    <Compile Include="Scenes\Places\Home.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\KoreanUtility.dll" />

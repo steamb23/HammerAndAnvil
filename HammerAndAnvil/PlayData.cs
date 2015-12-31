@@ -21,7 +21,10 @@ namespace HA
         {
             get; set;
         }
-        long _date;
+        public long Gold
+        {
+            get; set;
+        }
         public long Date
         {
             get; set;

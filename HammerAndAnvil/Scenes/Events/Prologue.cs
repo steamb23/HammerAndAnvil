@@ -11,8 +11,8 @@ namespace HA.Scenes.Events
         public override void Script()
         {
             Console.WriteLine("...");
-            Console.ReadKey(true);
             Console.WriteLine();
+            Console.ReadKey(true);
             Console.WriteLine("아리스 대륙으로 건너온 이후 아리스글로리 여관에서 지낸지 벌써 한달이 다 되가고 있다.");
             Console.ReadKey(true);
             Console.WriteLine("물론 그 동안 놀고만 있었던 것만은 아니다.");
@@ -25,8 +25,8 @@ namespace HA.Scenes.Events
             Console.ReadKey(true);
             Console.Clear();
             Console.WriteLine("아리스토나의 거리...");
-            Console.ReadKey(true);
             Console.WriteLine();
+            Console.ReadKey(true);
             Console.WriteLine("도시의 거리는 사람들의 활기찬 발걸음으로 가득찼다.");
             Console.ReadKey(true);
             Console.WriteLine("아직은 마을 수준보다 조금 크다고 말할 수 있는 작은 도시긴하지만 정착지가 세워진 몇년동안 이 정도로 성장했다는 것은 놀라울 따름이다.");
@@ -39,8 +39,8 @@ namespace HA.Scenes.Events
             Console.ReadKey(true);
             Console.Clear();
             Console.WriteLine("아리스토나 제련소...");
-            Console.ReadKey(true);
             Console.WriteLine();
+            Console.ReadKey(true);
             Console.WriteLine("이제까지는 도시 북부에 위치한 철광에서 캔 철광석들을 주괴로 만들어 거의 다 본토의 왕국에 수출하던 제련소다.");
             Console.ReadKey(true);
             Console.WriteLine("그리고 이제는 내가 이 제련소의 주요 고객이 되겠지...");
@@ -81,8 +81,8 @@ namespace HA.Scenes.Events
             Console.ReadKey(true);
             Console.Clear();
             Console.WriteLine("{0} 앞...", PlayData.CurrentPlayData.WorkshopName);
-            Console.ReadKey(true);
             Console.WriteLine();
+            Console.ReadKey(true);
             Console.WriteLine("중심가에서 약간 구석진 곳에 위치한 작은 대장간.");
             Console.ReadKey(true);
             Console.WriteLine("이제, 내 집이자 일터가 될 곳이다.");
@@ -114,24 +114,21 @@ namespace HA.Scenes.Events
             Console.WriteLine("소피아를 배웅했다. 자 그럼, 이제 건물 안을 둘러봐야지.");
             Console.ReadKey(true);
             Console.Clear();
-            Console.WriteLine("{0}, 작업실...", PlayData.CurrentPlayData.WorkshopName);
-            Console.ReadKey(true);
+            Console.WriteLine("{0}...", PlayData.CurrentPlayData.WorkshopName);
             Console.WriteLine();
+            Console.ReadKey(true);
             Console.WriteLine("모든 연장들이 가지런히 걸려있고, 금속을 빨갛게 달굴 화로는 튼튼하게 지어져있다.");
             Console.ReadKey(true);
             Console.WriteLine("작지만 대장간으로써는 충분하다.");
             Console.ReadKey(true);
             Console.WriteLine("내일은 바로 일할 수 있을 것 같다.");
             Console.ReadKey(true);
-            Console.Clear();
-            Console.WriteLine("{0}, 집...", PlayData.CurrentPlayData.WorkshopName);
-            Console.ReadKey(true);
-            Console.WriteLine();
-            Console.WriteLine("이곳이 이제 나의 집이다.");
+            Console.WriteLine("이제 이곳이 나의 집이다.");
             Console.ReadKey(true);
             Console.WriteLine("오늘은 짐 정리좀 하다가 일찍 자야겠다.");
             Console.ReadKey(true);
             PlayData.NextDay();
+            Program.SceneManager.ChangeScene(new Places.Home());
         }
     }
 }
