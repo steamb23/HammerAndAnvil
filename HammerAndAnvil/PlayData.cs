@@ -36,6 +36,10 @@ namespace HA
             Console.WriteLine("     {0} 일째...", CurrentPlayData.Date);
             Console.ReadKey(true);
         }
+        public DayResult DayResult
+        {
+            get; set;
+        }
         public PreLoadedScene PreLoadedScene
         {
             get; set;
@@ -44,5 +48,12 @@ namespace HA
     public struct PreLoadedScene
     {
 
+    }
+    public struct DayResult
+    {
+        public long Profit
+        {
+            get; set;
+        }
     }
 }
