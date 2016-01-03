@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Console\ConsoleEx.cs" />
     <Compile Include="Console\ConsoleSelector.cs" />
+    <Compile Include="NumberExtensions\SecureInt64.cs" />
     <Compile Include="PlayData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,6 +120,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HammerAndAnvil.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ConsoleExtensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

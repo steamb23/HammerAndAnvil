@@ -14,6 +14,8 @@ namespace HA.Scenes
             const char borderText = '=';
             Console.SetCursorPosition(1, 0);
             Console.Write(new string(borderText, 78));
+            Console.ForegroundColor = ConsoleColor.Red;
+            ConsoleEx.WriteText("◆경고! 창의 가로 사이즈를 수정하지 마세요!◆", 40, 29, ConsoleEx.Align.Center);
             Console.ForegroundColor = ConsoleColor.Magenta;
             ConsoleEx.WriteText("H A M M E R   A N D   A N V I L", 40, 3, ConsoleEx.Align.Center);
             Console.ResetColor();

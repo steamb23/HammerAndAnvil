@@ -150,6 +150,9 @@ namespace HA.Scenes
                         Console.WriteLine("대기하거나 아이템을 사용하는 것은 일반적으로 기력을 회복시킵니다.");
                         Console.ReadKey(true);
                     });
+                    ConsoleEx.Selector.Add('x', "취소", () =>
+                    {
+                    });
                     ConsoleEx.Selector.Read();
                 });
                 ConsoleEx.Selector.Add('x', "취소", () =>
